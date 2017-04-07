@@ -1,0 +1,19 @@
+<div class="col-md-12 col-md-offset-12">
+  <h2>edit discussion board</h2>
+
+  <hr>
+  <%= form_for @group do |f| %>
+
+  title
+  <%= f.text_field :title %>
+  <br>
+  <br>
+  description
+  <br>
+  <br>
+  <%= f.text_area :description %>
+  <br>
+
+  <%= f.submit "Submit", :disable_with => 'Fucking Submiting...'%>
+  <% end %>
+</div>
