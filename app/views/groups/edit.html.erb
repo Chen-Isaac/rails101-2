@@ -1,27 +1,7 @@
 <div class="col-md-4 col-md-offset-4">
   <h2>edit discussion board</h2>
   <li>Don't be silly!!!</li>
-  <% if @group.errors.any? %>
-  <ol>
-    <% @group.errors.full_messages.each do |msgedit| %>
-      <li><%= msgedit %></li>
-    <% end %>
-  </ol>
-  <% end %>
-
   <hr>
-  <%= form_for @group do |fff| %>
 
-  title@edit
-  <%= fff.text_field :title %>
-  <br>
-  <br>
-  description@edit
-  <br>
-  <br>
-  <%= fff.text_area :description %>
-  <br>
-
-  <%= fff.submit "AhAh Submit", :disable_with => 'Submiting...'%>
-  <% end %>
+  <%= render "partform" %>
 </div>
