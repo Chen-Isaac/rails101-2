@@ -1,19 +1,27 @@
 <div class="col-md-4 col-md-offset-4">
   <h2>edit discussion board</h2>
+  <li>Don't be silly!!!</li>
+  <% if @group.errors.any? %>
+  <ol>
+    <% @group.errors.full_messages.each do |msgedit| %>
+      <li><%= msgedit %></li>
+    <% end %>
+  </ol>
+  <% end %>
 
   <hr>
-  <%= form_for @group do |f| %>
+  <%= form_for @group do |fff| %>
 
   title@edit
-  <%= f.text_field :title %>
+  <%= fff.text_field :title %>
   <br>
   <br>
   description@edit
   <br>
   <br>
-  <%= f.text_area :description %>
+  <%= fff.text_area :description %>
   <br>
 
-  <%= f.submit "AhAh Submit", :disable_with => 'Submiting...'%>
+  <%= fff.submit "AhAh Submit", :disable_with => 'Submiting...'%>
   <% end %>
 </div>
