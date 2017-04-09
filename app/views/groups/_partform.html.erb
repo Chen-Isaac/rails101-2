@@ -1,24 +1,8 @@
-<%= form_for @group do |ff|%>
-<% if @group.errors.any? %>
-<ul>
-  <% @group.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-</ul>
-<% end %>
+<%= simple_form_for @group do |ff|%>
 
 <div class="form-group">
-  <div class="form-group string optional">
-    <%= ff.label "标题", :class => "string optional control-label" %>
-    <%= ff.text_field :title, :class => "string optional form-control" %>
-  </div>
-
-  <div class="form-group string optional">
-    <%= ff.label "描述", :class => "string optional control-label" %>
-    <%= ff.text_area :description, :class => "string optional form-control" %>
-  </div>
-
+  <%= ff.input :title, input_html: { class: "form-control"} %>
+  <%= ff.input :description, input_html: { class: "form-control"} %>
 </div>
-
 <%= ff.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submitting..." } %>
 <% end %>
