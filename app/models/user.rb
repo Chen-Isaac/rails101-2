@@ -7,6 +7,14 @@ class User < ApplicationRecord
   has_many :groups
   has_many :group_relationships
   has_many :participated_groups, :through => :group_relationships, :source => :group
+  def join!(group)
+    participated_groups << group
+  end
+
+  def  quit!(group)
+    participated_groups.delete(group)
+  end
+
   def is_member?(group)
     participated_groups.include?(group)
   end
