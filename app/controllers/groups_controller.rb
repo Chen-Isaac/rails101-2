@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :authenticate_user! , only: [:new, :create, :update, :edit, :destroy]
+  before_action :authenticate_user! , only: [:new, :create, :update, :edit, :destroy, :join_try, :quit_try]
   before_action :find_group_and_check_permission, only: [:edit, :update, :destroy]
   def destroy
 
@@ -39,6 +39,29 @@ class GroupsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def join_try
+    @group = Group.find(params[:id])
+    if !current_user.is_member?(@group)
+      current_user.join!(@group)
+      flash[:notice] = "Join this group successfully"
+    else
+      flash[:warning] = "Silly!You already are the group member!"
+    end
+
+    redirect_to group_path(@group)
+  end
+
+  def  quit_try
+    @group = Group.find(params[:id])
+    if current_user.is_member?(@group)
+      current_user.quit!(@group)
+      flash[:alert] = "You have quitted the group!"
+    else
+      flash[:warning] = "You aren't the group member, how can you quit it? Stupid!"
+    end
+    redirect_to group_path(@group)
   end
 
   private
