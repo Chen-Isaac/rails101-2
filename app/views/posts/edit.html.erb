@@ -1,0 +1,12 @@
+<div class="col-md-4 col-md-offset-4">
+  <h2>edit my post</h2>
+  <hr>
+  <%= simple_form_for [@group,@post] do |fx| %>
+    <div class="form-group">
+      <%= fx.input :content, input_html: {class: "form-control"} %>
+    </div>
+    <div class="form-actions">
+      <%= fx.submit "Submit", disable_with: "Submiting...", class: "btn btn-primary"%>
+    </div>
+  <% end %>
+</div>
